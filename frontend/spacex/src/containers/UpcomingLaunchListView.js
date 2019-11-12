@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import Launch from '../components/Launch'
+import UpcomingLaunch from '../components/UpcomingLaunch'
 
 const listData = [];
 
-class LaunchList extends React.Component {
+class UpcomingLaunchList extends React.Component {
     state = {
-        upcomingLaunch: []
+        upcomingLaunches: []
     }
     
     componentDidMount() {
@@ -14,15 +14,15 @@ class LaunchList extends React.Component {
             .then(res => {
                 console.log(res.data);
                 this.setState({
-                    upcomingLaunch: res.data
+                    upcomingLaunches: res.data
                 })
             })
     }
 
     render() {
         return (
-            <Launch data={this.state.upcomingLaunch} />
+            <UpcomingLaunch data={this.state.upcomingLaunches} />
         );
     }
 }
-export default LaunchList;
+export default UpcomingLaunchList;

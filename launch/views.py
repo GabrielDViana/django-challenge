@@ -95,12 +95,11 @@ def upcoming_launches(request):
             launch.nationality = element['rocket']['second_stage']['payloads'][0]['nationality']
             launch.manufacturer = element['rocket']['second_stage']['payloads'][0]['manufacturer']
             launch.launch_success = False
-            
+
             launches.append(launch.as_json())
             serializer = LaunchSerializer(data=launch.as_json())
             if serializer.is_valid():
                 serializer.save()
-                
 
         return JsonResponse(launches, safe=False, status=201)
 
@@ -108,3 +107,29 @@ def upcoming_launches(request):
 def past_launches(request):
     if request.method == "GET":
         r = requests.get('https://api.spacexdata.com/v3/launches/past')
+        json = r.json()
+
+        launches = []
+
+        for element in json:
+            launch = Launch()
+            launch.flight_number = int(element['flight_number'])
+            launch.launch_year = int(element['launch_year'])
+            launch.launch_date_utc = element['launch_date_utc']
+            launch.launch_date_local = element['launch_date_local']
+            launch.rocket_id = element['rocket']['rocket_id']
+            launch.rocket_name = element['rocket']['rocket_name']
+            launch.rocket_type = element['rocket']['rocket_type']
+            launch.land_success = False
+            launch.site_name = element['launch_site']['site_name_long']
+            launch.customer = element['rocket']['second_stage']['payloads'][0]['customers']
+            launch.nationality = element['rocket']['second_stage']['payloads'][0]['nationality']
+            launch.manufacturer = element['rocket']['second_stage']['payloads'][0]['manufacturer']
+            launch.launch_success = False
+
+            launches.append(launch.as_json())
+            serializer = LaunchSerializer(data=launch.as_json())
+            if serializer.is_valid():
+                serializer.save()
+
+        return JsonResponse(launches, safe=False, status=201)
