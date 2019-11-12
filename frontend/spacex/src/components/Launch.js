@@ -19,7 +19,7 @@ const Launch = (props) => {
                 onChange: page => {
                     console.log(page);
                 },
-                pageSize: 3,
+                pageSize: 10,
             }}
             dataSource={props.data}
             footer={
@@ -43,19 +43,6 @@ const Launch = (props) => {
                         />
                     }
                 >
-                    {/* flight_number
-                    launch_year
-                    launch_date_utc
-                    launch_date_local
-                    rocket_id
-                    rocket_name
-                    rocket_type
-                    land_success
-                    site_name
-                    customer
-                    nationality
-                    manufacturer
-                    launch_success */}
                     <List.Item.Meta
                         // avatar={<Avatar src={item.avatar} />}
                         title={item.rocket_name}
