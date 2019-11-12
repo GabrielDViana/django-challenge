@@ -10,7 +10,7 @@ const IconText = ({ type, text }) => (
     </span>
 );
 
-const Launches = (props) => {
+const Launch = (props) => {
     return (
         <List
             itemLayout="vertical"
@@ -29,7 +29,7 @@ const Launches = (props) => {
             }
             renderItem={item => (
                 <List.Item
-                    key={item.title}
+                
                     actions={[
                         <IconText type="star-o" text="156" key="list-vertical-star-o" />,
                         <IconText type="like-o" text="156" key="list-vertical-like-o" />,
@@ -43,16 +43,29 @@ const Launches = (props) => {
                         />
                     }
                 >
+                    {/* flight_number
+                    launch_year
+                    launch_date_utc
+                    launch_date_local
+                    rocket_id
+                    rocket_name
+                    rocket_type
+                    land_success
+                    site_name
+                    customer
+                    nationality
+                    manufacturer
+                    launch_success */}
                     <List.Item.Meta
-                        avatar={<Avatar src={item.avatar} />}
-                        title={<a href={item.href}>{item.title}</a>}
-                        description={item.description}
+                        // avatar={<Avatar src={item.avatar} />}
+                        title={item.rocket_name}
+                        description={item.nationality}
                     />
-                    {item.content}
+                    {item.manufacturer}
                 </List.Item>
             )}
         />
     );
 }
 
-export default Launches;
+export default Launch;

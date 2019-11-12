@@ -1,11 +1,9 @@
 # from django.shortcuts import render
 # from django.conf import settings
 import requests
-import json as JSON
 
-from rest_framework.parsers import JSONParser
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 
 from launch.models import Launch
 from .serializers import LaunchSerializer
