@@ -51,3 +51,6 @@ class Launch(models.Model):
     mean_motion = models.FloatField()
     raan = models.FloatField()
     launch_success = models.BooleanField()
+
+    def __str__(self):
+        return self

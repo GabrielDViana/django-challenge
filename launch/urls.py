@@ -1,7 +1,8 @@
-from rest_framework import routers
-from .api import LaunchViewSet
+from django.urls import path
 
-router = routers.DefaultRouter()
-router.register('api/launch', LaunchViewSet, 'launch')
+from .views import LaunchDetailView, LaunchesListView
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', LaunchesListView.as_view()),
+    path('<pk>', LaunchDetailView.as_view()),
+]
