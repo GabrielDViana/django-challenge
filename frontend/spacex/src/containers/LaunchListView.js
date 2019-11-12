@@ -10,7 +10,7 @@ class LaunchList extends React.Component {
     }
     
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/upcoming/')
+        axios.get('http://0.0.0.0:8000/api/upcoming/')
             .then(res => {
                 console.log(res.data);
                 this.setState({
