@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import LaunchList from '../components/LaunchList'
 
-const listData = [];
-
 class UpcomingLaunchList extends React.Component {
     state = {
         upcomingLaunches: []

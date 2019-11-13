@@ -1,28 +1,26 @@
 import React from 'react';
 import axios from 'axios';
-import LaunchList from '../components/LaunchList'
+import Launch from '../components/Launch'
 
-const listData = [];
-
-class UpcomingLaunchList extends React.Component {
+class LatestLaunch extends React.Component {
     state = {
-        upcomingLaunches: []
+        latestLaunches: {}
     }
     
     componentDidMount() {
-        axios.get('http://0.0.0.0:8000/api/upcoming/')
+        axios.get('http://0.0.0.0:8000/api/latest/')
             .then(res => {
                 console.log(res.data);
                 this.setState({
-                    upcomingLaunches: res.data
+                    latestLaunches: res.data
                 })
             })
     }
 
     render() {
         return (
-            <LaunchList data={this.state.upcomingLaunches} />
+            <Launch data={this.state.latestLaunches} />
         );
     }
 }
-export default UpcomingLaunchList;
+export default LatestLaunch;

@@ -2,27 +2,25 @@ import React from 'react';
 import axios from 'axios';
 import LaunchList from '../components/LaunchList'
 
-const listData = [];
-
-class UpcomingLaunchList extends React.Component {
+class PastLaunchList extends React.Component {
     state = {
-        upcomingLaunches: []
+        pastLaunches: []
     }
     
     componentDidMount() {
-        axios.get('http://0.0.0.0:8000/api/upcoming/')
+        axios.get('http://0.0.0.0:8000/api/past/')
             .then(res => {
                 console.log(res.data);
                 this.setState({
-                    upcomingLaunches: res.data
+                    pastLaunches: res.data
                 })
             })
     }
 
     render() {
         return (
-            <LaunchList data={this.state.upcomingLaunches} />
+            <LaunchList data={this.state.pastLaunches} />
         );
     }
 }
-export default UpcomingLaunchList;
+export default PastLaunchList;
