@@ -4,7 +4,7 @@ import Launch from '../components/Launch'
 
 class LatestLaunch extends React.Component {
     state = {
-        latestLaunches: {}
+        latestLaunch: {}
     }
     
     componentDidMount() {
@@ -12,14 +12,14 @@ class LatestLaunch extends React.Component {
             .then(res => {
                 console.log(res.data);
                 this.setState({
-                    latestLaunches: res.data
+                    latestLaunch: res.data
                 })
             })
     }
 
     render() {
         return (
-            <Launch data={this.state.latestLaunches} />
+            <Launch data={this.state.latestLaunch} />
         );
     }
 }

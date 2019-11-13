@@ -60,7 +60,7 @@ def latest_launch(request):
         launch.rocket_type = json['rocket']['rocket_type']
         launch.land_success = False
         launch.site_name = json['launch_site']['site_name_long']
-        launch.customer = json['rocket']['second_stage']['payloads'][0]['customers']
+        launch.customer = json['rocket']['second_stage']['payloads'][0]['customers'][0]
         launch.nationality = json['rocket']['second_stage']['payloads'][0]['nationality']
         launch.manufacturer = json['rocket']['second_stage']['payloads'][0]['manufacturer']
         launch.launch_success = False
