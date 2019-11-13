@@ -1,38 +1,51 @@
 import React from 'react';
+import UpcomingLaunchList from './UpcomingLaunchListView';
 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Icon, Tabs } from 'antd';
+const TabPane = Tabs.TabPane;
+const { Content, Footer } = Layout;
 
-const { Header, Content, Footer } = Layout;
+class CustomLayout extends React.Component {
+    state = {
+        current: 'mail',
+    };
 
-const CustomLayout = (props) => {
-    return (
-        <Layout className="layout">
-            <Header>
-                <div className="logo" />
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    style={{ lineHeight: '64px' }}
-                >
-                    <Menu.Item key="1">nav 1</Menu.Item>
-                    <Menu.Item key="2">nav 2</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
-                </Menu>
-            </Header>
-            <Content style={{ padding: '0 50px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item>List</Breadcrumb.Item>
-                    <Breadcrumb.Item>App</Breadcrumb.Item>
-                </Breadcrumb>
-                <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                    {props.children}
-                </div>
-            </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
-    );
+    handleClick = e => {
+        console.log('click ', e);
+        this.setState({
+            current: e.key,
+        });
+    };
+
+    callback(key) {
+        console.log(key);
+    }
+      
+
+    render() {
+        return (
+            <Layout>
+                <Content style={{ background: '#fff', padding: '0 20px' }}>
+                <Tabs defaultActiveKey="1" onChange={this.callback}>
+                    <TabPane tab="Próximo Lançamento" key="1">
+
+                    </TabPane>
+                    <TabPane tab="Último Lançamento" key="2">
+
+                    </TabPane>
+                    <TabPane tab="Próximos Lançamentos" key="3">
+                        <UpcomingLaunchList />
+                    </TabPane>
+                    <TabPane tab="Lançamentos Passados" key="4">
+                    </TabPane>
+                </Tabs>
+                    <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+                    </div>
+                </Content>
+                <Footer style={{ textAlign: 'center', bottom: 0 }}></Footer>
+            </Layout>
+        );
+    }
 }
 
 export default CustomLayout;

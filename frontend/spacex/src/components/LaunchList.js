@@ -12,7 +12,7 @@ const IconText = ({ type, text }) => (
     </span>
 );
 
-const UpcomingLaunch = (props) => {
+const LaunchList = (props) => {
     return (
         <List
             itemLayout="vertical"
@@ -49,4 +49,4 @@ const UpcomingLaunch = (props) => {
     );
 }
 
-export default UpcomingLaunch;
+export default LaunchList;
